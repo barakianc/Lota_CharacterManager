@@ -161,3 +161,14 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+# Unity .gitignore file.
+.DS_Store
+Library
+Library/*
+*.csproj
+*.sln
+*.userprefs
+Temp
+*.pidb
+Build
