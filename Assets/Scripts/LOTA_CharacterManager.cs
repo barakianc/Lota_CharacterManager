@@ -19,6 +19,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
     public GameObject Swordsman;
     public GameObject Mage;
     public GameObject Spearman;
+    public string charname = "Character Name";
 	// Use this for initialization
 	void Start () {
 	    
@@ -47,6 +48,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                 {
                     SelectChar = true;
                     selectTarget = 0;
+                    charname = "Character Name";
                 }
             }
            
@@ -64,6 +66,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                 {
                     SelectChar = true;
                     selectTarget = 1;
+                    charname = "Character Name";
                 }
             }
            
@@ -81,6 +84,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                 {
                     SelectChar = true;
                     selectTarget = 2;
+                    charname = "Character Name";
                 }
             }
             
@@ -98,33 +102,48 @@ public class LOTA_CharacterManager : MonoBehaviour {
                 {
                     SelectChar = true;
                     selectTarget = 3;
+                    charname = "Character Name";
                 }
             }
         }
         else if (!DisplayDets && SelectChar && !openShop)
         {
+            
+            charname = GUI.TextArea(new Rect(300, 150, 150, 50), charname,200);
             if (GUI.Button(new Rect(25, 25, 250, 200), "Archer"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Archer,transform.position, transform.rotation);
-				TeamCharacters[selectTarget].name = "Archer P" + (selectTarget+1).ToString();
+                if (charname == "")
+                    TeamCharacters[selectTarget].name = "Archer P" + (selectTarget + 1).ToString();
+                else
+                    TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
             if (GUI.Button(new Rect(500, 25, 250, 200), "Swordsman"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Swordsman, transform.position, transform.rotation);
-				TeamCharacters[selectTarget].name = "Swordsman P" + (selectTarget+1).ToString();
+                if (charname == "")
+                    TeamCharacters[selectTarget].name = "Swordsman P" + (selectTarget + 1).ToString();
+                else
+                    TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
             if (GUI.Button(new Rect(25, 250, 250, 200), "Spearman"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Spearman,transform.position, transform.rotation);
-				TeamCharacters[selectTarget].name = "Spearman P" + (selectTarget+1).ToString();
+                if (charname == "")
+                    TeamCharacters[selectTarget].name = "Spearman P" + (selectTarget + 1).ToString();
+                else
+                    TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
             if (GUI.Button(new Rect(500, 250, 250, 200), "Mage"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Mage, transform.position, transform.rotation);
-				TeamCharacters[selectTarget].name = "Mage P" + (selectTarget+1).ToString();
+                if (charname == "")
+                    TeamCharacters[selectTarget].name = "Mage P" + (selectTarget + 1).ToString();
+                else
+                    TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
         }
