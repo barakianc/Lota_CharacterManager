@@ -36,15 +36,61 @@ public class LOTA_CharacterManager : MonoBehaviour {
         {
             if (TeamCharacters[0] != null)
             {
-                if (GUI.Button(new Rect(25, 25, 250, 200), TeamCharacters[0].name))
+				string charinfo = TeamCharacters[0].name + "\nHP: " + TeamCharacters[0].GetComponent<Character_Script>().HealtPoints + 
+					"\nMP: " + TeamCharacters[0].GetComponent<Character_Script>().ManaPoints + "\nAttack: " + TeamCharacters[0].GetComponent<Character_Script>().AttackPower
+						+ "\nDefense: " + TeamCharacters[0].GetComponent<Character_Script>().Defense + "\n Movement: " + TeamCharacters[0].GetComponent<Character_Script>().Movement
+						+ "\nRange: " + TeamCharacters[0].GetComponent<Character_Script>().AttackRange;
+					
+                if (GUI.Button(new Rect(125, 25, 250, 200),charinfo ))
                 {
                     DisplayDets = true;
                     charDetails = TeamCharacters[0];
                 }
+				//damage
+				if(GUI.Button(new Rect(50,25,75,75),"Damage 1")){
+					TeamCharacters[0].GetComponent<Character_Script>().HealtPoints--;
+					if(TeamCharacters[0].GetComponent<Character_Script>().HealtPoints < 0){
+						TeamCharacters[0].GetComponent<Character_Script>().HealtPoints = TeamCharacters[0].GetComponent<Character_Script>().MaxHealth;
+					}
+				}
+				//heal
+				if(GUI.Button(new Rect(50,100,75,75),"Heal 1")){
+					if(TeamCharacters[0].GetComponent<Character_Script>().HealtPoints < TeamCharacters[0].GetComponent<Character_Script>().MaxHealth){
+						TeamCharacters[0].GetComponent<Character_Script>().HealtPoints++;
+					}
+					
+				}
+				//restore
+				if(GUI.Button(new Rect(50,175,75,50),"MP +1")){
+					if(TeamCharacters[0].GetComponent<Character_Script>().ManaPoints < TeamCharacters[0].GetComponent<Character_Script>().MaxMana){
+						TeamCharacters[0].GetComponent<Character_Script>().ManaPoints++;
+					}
+					
+				}
+				//Spell1
+				if(GUI.Button(new Rect(375,25,75,75),TeamCharacters[0].GetComponent<Character_Script>().spell1)){
+					if(TeamCharacters[0].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[0].GetComponent<Character_Script>().spell1cost ){
+						TeamCharacters[0].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[0].GetComponent<Character_Script>().spell1cost;
+					}
+				}
+				//spell2
+				if(GUI.Button(new Rect(375,100,75,75),TeamCharacters[0].GetComponent<Character_Script>().spell2)){
+					if(TeamCharacters[0].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[0].GetComponent<Character_Script>().spell2cost ){
+						TeamCharacters[0].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[0].GetComponent<Character_Script>().spell2cost;
+					}
+					
+				}
+				//spell3
+				if(GUI.Button(new Rect(375,175,75,50),TeamCharacters[0].GetComponent<Character_Script>().spell3)){
+					if(TeamCharacters[0].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[0].GetComponent<Character_Script>().spell3cost ){
+						TeamCharacters[0].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[0].GetComponent<Character_Script>().spell3cost;
+					}
+					
+				}
             }
             else
             {
-                if (GUI.Button(new Rect(25, 25, 250, 200), "Add New Character"))
+                if (GUI.Button(new Rect(125, 25, 250, 200), "Add New Character"))
                 {
                     SelectChar = true;
                     selectTarget = 0;
@@ -54,15 +100,57 @@ public class LOTA_CharacterManager : MonoBehaviour {
            
             if (TeamCharacters[1] != null)
             {
-                if (GUI.Button(new Rect(500, 25, 250, 200), TeamCharacters[1].name))
+				string charinfo = TeamCharacters[1].name + "\nHP: " + TeamCharacters[1].GetComponent<Character_Script>().HealtPoints + 
+					"\nMP: " + TeamCharacters[1].GetComponent<Character_Script>().ManaPoints + "\nAttack: " + TeamCharacters[1].GetComponent<Character_Script>().AttackPower
+						+ "\nDefense: " + TeamCharacters[1].GetComponent<Character_Script>().Defense + "\n Movement: " + TeamCharacters[1].GetComponent<Character_Script>().Movement
+						+ "\nRange: " + TeamCharacters[1].GetComponent<Character_Script>().AttackRange;
+                if (GUI.Button(new Rect(575, 25, 250, 200), charinfo))
                 {
                     DisplayDets = true;
                     charDetails = TeamCharacters[1];
                 }
+				if(GUI.Button(new Rect(500,25,75,75),"1 Damage")){
+					TeamCharacters[1].GetComponent<Character_Script>().HealtPoints--;
+					if(TeamCharacters[1].GetComponent<Character_Script>().HealtPoints < 0){
+						TeamCharacters[1].GetComponent<Character_Script>().HealtPoints = TeamCharacters[1].GetComponent<Character_Script>().MaxHealth;
+					}
+				}
+				if(GUI.Button(new Rect(500,100,75,75),"Heal 1")){
+					if(TeamCharacters[1].GetComponent<Character_Script>().HealtPoints < TeamCharacters[1].GetComponent<Character_Script>().MaxHealth){
+						TeamCharacters[1].GetComponent<Character_Script>().HealtPoints++;
+					}
+					
+				}
+				if(GUI.Button(new Rect(500,175,75,50),"MP +1")){
+					if(TeamCharacters[1].GetComponent<Character_Script>().ManaPoints < TeamCharacters[1].GetComponent<Character_Script>().MaxMana){
+						TeamCharacters[1].GetComponent<Character_Script>().ManaPoints++;
+					}
+					
+				}
+				//Spell1
+				if(GUI.Button(new Rect(825,25,75,75),TeamCharacters[1].GetComponent<Character_Script>().spell1)){
+					if(TeamCharacters[1].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[1].GetComponent<Character_Script>().spell1cost ){
+						TeamCharacters[1].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[1].GetComponent<Character_Script>().spell1cost;
+					}
+				}
+				//spell2
+				if(GUI.Button(new Rect(825,100,75,75),TeamCharacters[1].GetComponent<Character_Script>().spell2)){
+					if(TeamCharacters[1].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[1].GetComponent<Character_Script>().spell2cost ){
+						TeamCharacters[1].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[1].GetComponent<Character_Script>().spell2cost;
+					}
+					
+				}
+				//spell3
+				if(GUI.Button(new Rect(825,175,75,50),TeamCharacters[1].GetComponent<Character_Script>().spell3)){
+					if(TeamCharacters[1].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[1].GetComponent<Character_Script>().spell3cost ){
+						TeamCharacters[1].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[1].GetComponent<Character_Script>().spell3cost;
+					}
+					
+				}
             }
             else
             {
-                if (GUI.Button(new Rect(500, 25, 250, 200), "Add New Character"))
+                if (GUI.Button(new Rect(575, 25, 250, 200), "Add New Character"))
                 {
                     SelectChar = true;
                     selectTarget = 1;
@@ -72,15 +160,57 @@ public class LOTA_CharacterManager : MonoBehaviour {
            
             if (TeamCharacters[2] != null)
             {
-                if (GUI.Button(new Rect(25, 250, 250, 200), TeamCharacters[2].name))
+				string charinfo = TeamCharacters[2].name + "\nHP: " + TeamCharacters[2].GetComponent<Character_Script>().HealtPoints + 
+					"\nMP: " + TeamCharacters[2].GetComponent<Character_Script>().ManaPoints + "\nAttack: " + TeamCharacters[2].GetComponent<Character_Script>().AttackPower
+						+ "\nDefense: " + TeamCharacters[2].GetComponent<Character_Script>().Defense + "\n Movement: " + TeamCharacters[2].GetComponent<Character_Script>().Movement
+						+ "\nRange: " + TeamCharacters[2].GetComponent<Character_Script>().AttackRange;
+                if (GUI.Button(new Rect(125, 250, 250, 200), charinfo))
                 {
                     DisplayDets = true;
                     charDetails = TeamCharacters[2];
                 }
+				if(GUI.Button(new Rect(50,250,75,75),"1 Damage")){
+					TeamCharacters[2].GetComponent<Character_Script>().HealtPoints--;
+					if(TeamCharacters[2].GetComponent<Character_Script>().HealtPoints < 0){
+						TeamCharacters[2].GetComponent<Character_Script>().HealtPoints = TeamCharacters[2].GetComponent<Character_Script>().MaxHealth;
+					}
+				}
+				if(GUI.Button(new Rect(50,325,75,75),"Heal 1")){
+					if(TeamCharacters[2].GetComponent<Character_Script>().HealtPoints < TeamCharacters[2].GetComponent<Character_Script>().MaxHealth){
+						TeamCharacters[2].GetComponent<Character_Script>().HealtPoints++;
+					}
+					
+				}
+				if(GUI.Button(new Rect(50,400,75,50),"MP +1")){
+					if(TeamCharacters[2].GetComponent<Character_Script>().ManaPoints < TeamCharacters[2].GetComponent<Character_Script>().MaxMana){
+						TeamCharacters[2].GetComponent<Character_Script>().ManaPoints++;
+					}
+					
+				}
+				//Spell1
+				if(GUI.Button(new Rect(375,250,75,75),TeamCharacters[2].GetComponent<Character_Script>().spell1)){
+					if(TeamCharacters[2].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[2].GetComponent<Character_Script>().spell1cost ){
+						TeamCharacters[2].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[2].GetComponent<Character_Script>().spell1cost;
+					}
+				}
+				//spell2
+				if(GUI.Button(new Rect(375,325,75,75),TeamCharacters[2].GetComponent<Character_Script>().spell2)){
+					if(TeamCharacters[2].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[2].GetComponent<Character_Script>().spell2cost ){
+						TeamCharacters[2].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[2].GetComponent<Character_Script>().spell2cost;
+					}
+					
+				}
+				//spell3
+				if(GUI.Button(new Rect(375,400,75,50),TeamCharacters[2].GetComponent<Character_Script>().spell3)){
+					if(TeamCharacters[2].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[2].GetComponent<Character_Script>().spell3cost ){
+						TeamCharacters[2].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[2].GetComponent<Character_Script>().spell3cost;
+					}
+					
+				}
             }
             else
             {
-                if (GUI.Button(new Rect(25, 250, 250, 200), "Add New Character"))
+                if (GUI.Button(new Rect(125, 250, 250, 200), "Add New Character"))
                 {
                     SelectChar = true;
                     selectTarget = 2;
@@ -90,15 +220,57 @@ public class LOTA_CharacterManager : MonoBehaviour {
             
             if (TeamCharacters[3] != null)
             {
-                if (GUI.Button(new Rect(500, 250, 250, 200), TeamCharacters[3].name))
+				string charinfo = TeamCharacters[3].name + "\nHP: " + TeamCharacters[3].GetComponent<Character_Script>().HealtPoints + 
+					"\nMP: " + TeamCharacters[3].GetComponent<Character_Script>().ManaPoints + "\nAttack: " + TeamCharacters[3].GetComponent<Character_Script>().AttackPower
+						+ "\nDefense: " + TeamCharacters[3].GetComponent<Character_Script>().Defense + "\n Movement: " + TeamCharacters[3].GetComponent<Character_Script>().Movement
+						+ "\nRange: " + TeamCharacters[3].GetComponent<Character_Script>().AttackRange;
+                if (GUI.Button(new Rect(575, 250, 250, 200), charinfo))
                 {
                     DisplayDets = true;
                     charDetails = TeamCharacters[3];
                 }
+				if(GUI.Button(new Rect(500,250,75,75),"1 Damage")){
+					TeamCharacters[3].GetComponent<Character_Script>().HealtPoints--;
+					if(TeamCharacters[3].GetComponent<Character_Script>().HealtPoints < 0){
+						TeamCharacters[3].GetComponent<Character_Script>().HealtPoints = TeamCharacters[3].GetComponent<Character_Script>().MaxHealth;
+					}
+				}
+				if(GUI.Button(new Rect(500,325,75,75),"Heal 1")){
+					if(TeamCharacters[3].GetComponent<Character_Script>().HealtPoints < TeamCharacters[3].GetComponent<Character_Script>().MaxHealth){
+						TeamCharacters[3].GetComponent<Character_Script>().HealtPoints++;
+					}
+					
+				}
+				if(GUI.Button(new Rect(500,400,75,50),"MP +1")){
+					if(TeamCharacters[3].GetComponent<Character_Script>().ManaPoints < TeamCharacters[3].GetComponent<Character_Script>().MaxMana){
+						TeamCharacters[3].GetComponent<Character_Script>().ManaPoints++;
+					}
+					
+				}
+				//Spell1
+				if(GUI.Button(new Rect(825,250,75,75),TeamCharacters[3].GetComponent<Character_Script>().spell1)){
+					if(TeamCharacters[3].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[3].GetComponent<Character_Script>().spell1cost ){
+						TeamCharacters[3].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[3].GetComponent<Character_Script>().spell1cost;
+					}
+				}
+				//spell2
+				if(GUI.Button(new Rect(825,325,75,75),TeamCharacters[3].GetComponent<Character_Script>().spell2)){
+					if(TeamCharacters[3].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[3].GetComponent<Character_Script>().spell2cost ){
+						TeamCharacters[3].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[3].GetComponent<Character_Script>().spell2cost;
+					}
+					
+				}
+				//spell3
+				if(GUI.Button(new Rect(825,400,75,50),TeamCharacters[3].GetComponent<Character_Script>().spell3)){
+					if(TeamCharacters[3].GetComponent<Character_Script>().ManaPoints >= TeamCharacters[3].GetComponent<Character_Script>().spell3cost ){
+						TeamCharacters[3].GetComponent<Character_Script>().ManaPoints -= TeamCharacters[3].GetComponent<Character_Script>().spell3cost;
+					}
+					
+				}
             }
             else
             {
-                if (GUI.Button(new Rect(500, 250, 250, 200), "Add New Character"))
+                if (GUI.Button(new Rect(575, 250, 250, 200), "Add New Character"))
                 {
                     SelectChar = true;
                     selectTarget = 3;
@@ -109,8 +281,8 @@ public class LOTA_CharacterManager : MonoBehaviour {
         else if (!DisplayDets && SelectChar && !openShop)
         {
             
-            charname = GUI.TextArea(new Rect(300, 150, 150, 50), charname,200);
-            if (GUI.Button(new Rect(25, 25, 250, 200), "Archer"))
+            charname = GUI.TextArea(new Rect(400, 150, 150, 50), charname,200);
+            if (GUI.Button(new Rect(125, 25, 250, 200), "Archer"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Archer,transform.position, transform.rotation);
                 if (charname == "")
@@ -119,7 +291,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(500, 25, 250, 200), "Swordsman"))
+            if (GUI.Button(new Rect(575, 25, 250, 200), "Swordsman"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Swordsman, transform.position, transform.rotation);
                 if (charname == "")
@@ -128,7 +300,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(25, 250, 250, 200), "Spearman"))
+            if (GUI.Button(new Rect(125, 250, 250, 200), "Spearman"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Spearman,transform.position, transform.rotation);
                 if (charname == "")
@@ -137,7 +309,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(500, 250, 250, 200), "Mage"))
+            if (GUI.Button(new Rect(575, 250, 250, 200), "Mage"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Mage, transform.position, transform.rotation);
                 if (charname == "")
