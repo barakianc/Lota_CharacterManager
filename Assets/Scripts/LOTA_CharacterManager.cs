@@ -292,37 +292,37 @@ public class LOTA_CharacterManager : MonoBehaviour {
         {
             
             charname = GUI.TextArea(new Rect(400, 150, 150, 50), charname,200);
-            if (GUI.Button(new Rect(125, 25, 250, 200), "Ranger:\nA qucik rang character\n with great mobility with\n the ability to stun and launch\n Multiple attacks."))
+            if (GUI.Button(new Rect(125, 25, 250, 200), "Ranger:\nA quick range character\n with great mobility with\n the ability to stun and launch\n Multiple attacks."))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Archer,transform.position, transform.rotation);
-                if (charname == "")
+                if (charname == "" || charname == "Character Name")
                     TeamCharacters[selectTarget].name = "Ranger P" + (selectTarget + 1).ToString();
                 else
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(575, 25, 250, 200), "Swordsman:\nA Tank type character with\n high health and Defense\n that and hold the line during battle"))
+            if (GUI.Button(new Rect(575, 25, 250, 200), "Swordsman:\nA Tank type character with\n high health and Defense\n that can and hold the line during battle"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Swordsman, transform.position, transform.rotation);
-                if (charname == "")
+                if (charname == "" || charname == "Character Name")
                     TeamCharacters[selectTarget].name = "Swordsman P" + (selectTarget + 1).ToString();
                 else
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(125, 250, 250, 200), "Spearman:\nA well balanced character\nthat can usehis abilities to close\n the gap on other players"))
+            if (GUI.Button(new Rect(125, 250, 250, 200), "Spearman:\nA well balanced character\nthat can use his abilities to close\n the gap on other players"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Spearman,transform.position, transform.rotation);
-                if (charname == "")
+                if (charname == "" || charname == "Character Name")
                     TeamCharacters[selectTarget].name = "Spearman P" + (selectTarget + 1).ToString();
                 else
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(575, 250, 250, 200), "Mage:\nA fragile but powerful range attacker\n with the ability to use mana\n to impower their attacks"))
+            if (GUI.Button(new Rect(575, 250, 250, 200), "Mage:\nA fragile but powerful range attacker\n with the ability to use mana\n to empower their attacks"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Mage, transform.position, transform.rotation);
-                if (charname == "")
+                if (charname == "" || charname == "Character Name")
                     TeamCharacters[selectTarget].name = "Mage P" + (selectTarget + 1).ToString();
                 else
                     TeamCharacters[selectTarget].name = charname;
