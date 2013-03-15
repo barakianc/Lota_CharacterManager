@@ -28,7 +28,12 @@ public class Character_Script : MonoBehaviour {
 
     public Texture2D charPic;
 
-    public string Ability;
+    public string Ability1;
+	public string Ability1ln2;
+	public string Ability2;
+	public string Ability2ln2;
+	public string Ability3;
+	public string Ability3ln2;
 	// Use this for initialization
 	void Start () {
 	

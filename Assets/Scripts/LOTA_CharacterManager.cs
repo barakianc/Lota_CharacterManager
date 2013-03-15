@@ -277,21 +277,31 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     charname = "Character Name";
                 }
             }
+			//new turn mana upkeep
+			if(GUI.Button(new Rect((Screen.width/2)-75,Screen.height-125,150,100),"New Turn")){
+				for(int i = 0; i < 4; i++){
+					if(TeamCharacters[i] != null){
+						if(TeamCharacters[i].GetComponent<Character_Script>().ManaPoints < TeamCharacters[i].GetComponent<Character_Script>().MaxMana){
+							TeamCharacters[i].GetComponent<Character_Script>().ManaPoints++;
+						}
+					}
+				}
+			}
         }
         else if (!DisplayDets && SelectChar && !openShop)
         {
             
             charname = GUI.TextArea(new Rect(400, 150, 150, 50), charname,200);
-            if (GUI.Button(new Rect(125, 25, 250, 200), "Archer"))
+            if (GUI.Button(new Rect(125, 25, 250, 200), "Ranger:\nA qucik rang character\n with great mobility with\n the ability to stun and launch\n Multiple attacks."))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Archer,transform.position, transform.rotation);
                 if (charname == "")
-                    TeamCharacters[selectTarget].name = "Archer P" + (selectTarget + 1).ToString();
+                    TeamCharacters[selectTarget].name = "Ranger P" + (selectTarget + 1).ToString();
                 else
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(575, 25, 250, 200), "Swordsman"))
+            if (GUI.Button(new Rect(575, 25, 250, 200), "Swordsman:\nA Tank type character with\n high health and Defense\n that and hold the line during battle"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Swordsman, transform.position, transform.rotation);
                 if (charname == "")
@@ -300,7 +310,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(125, 250, 250, 200), "Spearman"))
+            if (GUI.Button(new Rect(125, 250, 250, 200), "Spearman:\nA well balanced character\nthat can usehis abilities to close\n the gap on other players"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Spearman,transform.position, transform.rotation);
                 if (charname == "")
@@ -309,7 +319,7 @@ public class LOTA_CharacterManager : MonoBehaviour {
                     TeamCharacters[selectTarget].name = charname;
                 SelectChar = false;
             }
-            if (GUI.Button(new Rect(575, 250, 250, 200), "Mage"))
+            if (GUI.Button(new Rect(575, 250, 250, 200), "Mage:\nA fragile but powerful range attacker\n with the ability to use mana\n to impower their attacks"))
             {
                 TeamCharacters[selectTarget] = (GameObject)Instantiate(Mage, transform.position, transform.rotation);
                 if (charname == "")
@@ -333,14 +343,15 @@ public class LOTA_CharacterManager : MonoBehaviour {
         }
         else
         {
+			GUIStyle newstyle = new GUIStyle(GUI.skin.button);
+			newstyle.alignment = TextAnchor.MiddleLeft;
             Character_Script stats = charDetails.transform.GetComponent<Character_Script>();
             string details = charDetails.name + "\n" + "HP: " + stats.HealtPoints.ToString() + "\nAttack: " + stats.AttackPower.ToString()
                                 + "\nDefense: " + stats.Defense.ToString() + "\nMovement: " + stats.Movement.ToString() + "\nRange: "
-                                + stats.AttackRange.ToString() + "\nHead Item: " + stats.headSlot.ItemName + "\nLeft Hand Item: " + stats.leftarmSlot.ItemName
-                                + "\nRight Hand Item: " + stats.rightarmSlot.ItemName + "\nChest Item: " + stats.chestSlot.ItemName + "\nFeet Item: "
-                                + stats.feetSlot.ItemName + "\nAbility: " + stats.Ability  + "\nGold: " + stats.Gold;
+                                + stats.AttackRange.ToString() + "\nAbilitys\n" + stats.Ability1 + "\n" + stats.Ability1ln2 
+								+ "\n" + stats.Ability2 + "\n" + stats.Ability2ln2 + "\n" + stats.Ability3 + "\n" + stats.Ability3ln2;
 
-            if (GUI.Button(new Rect(100, 50, 500, 500), details))
+            if (GUI.Button(new Rect(100, 50, 500, 500), details,newstyle))
             {
                 DisplayDets = false;
             }
@@ -354,9 +365,10 @@ public class LOTA_CharacterManager : MonoBehaviour {
                 openShop = true;
             }
 
-            if (GUI.Button(new Rect(650, 350, 150, 150), "Sell Items"))
+            if (GUI.Button(new Rect(650, 350, 150, 150), "Delete Character"))
             {
-                openSell = true;
+				Destroy(charDetails);
+                DisplayDets = false;
             }
         }
     }
